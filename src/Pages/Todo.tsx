@@ -6,7 +6,7 @@ const Todo = () => {
     return (
         <div>
            <Container>
-           <h1>this is todoPage  =///  </h1>
+           {/* <h1>this is todoPage  =///  </h1> */}
            <TodoContianer/>
            </Container>
         </div>
