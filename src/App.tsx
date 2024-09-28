@@ -1,12 +1,12 @@
 import { Button } from "./components/ui/button"
+import Todo from "./Pages/Todo"
 
 
 function App() {
 
   return (
   <div>
-     <h1>my todo  </h1>
-     <Button> shadcn</Button>
+     <Todo/>
   </div>
   )
 }
