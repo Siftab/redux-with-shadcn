@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { FormEvent } from "react";
 import { Button } from "../ui/button";
 import {   Dialog,
     DialogContent,
@@ -12,6 +12,18 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 const AddToDo = () => {
+
+
+  const [task,setTask]=React.useState('')
+  const [description,setDescription]=React.useState('')
+
+
+  const handleSubmit =(e:FormEvent)=>{
+    e.preventDefault()
+    console.log({task,description})
+    console.log("working")
+
+  }
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -21,35 +33,33 @@ const AddToDo = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Add Task</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Add Task you Want to finish
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
+            <Label htmlFor="task" className="text-right">
+              Task
             </Label>
             <Input
-              id="name"
-              defaultValue="Pedro Duarte"
+              id="task"
               className="col-span-3"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
+            <Label htmlFor="description" className="text-right">
+              Description
             </Label>
             <Input
-              id="username"
-              defaultValue="@peduarte"
+              id="description"
               className="col-span-3"
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit" onClick={handleSubmit}>Save changes</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

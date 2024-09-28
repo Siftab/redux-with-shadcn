@@ -1,16 +1,14 @@
 import React from 'react';
 import TodoCard from './TodoCard';
-import { Button } from '../ui/button';
 import AddToDo from './AddToDo';
-// import TodoFilter from './todoFilter';
+import TodoFilter from './TodoFilter';
 
 const TodoContianer = () => {
     return (
         <div className=''>
             <div className=' flex justify-between  px-8  border '>
                 <AddToDo/>
-                <Button className='bg-primary-gradient text-xl font-semibold'>Filter</Button>
-                {/* <TodoFilter/>    */}
+                <TodoFilter/>   
             </div>
             <div className=' bg-primary-gradient p-5 rounded-xl space-y-3 mx-3'>
                 {/* <div className='text-center font-bold bg-white p-5 rounded-lg'>there is no task pending </div> */}
