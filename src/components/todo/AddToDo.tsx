@@ -1,29 +1,27 @@
-
 import React, { FormEvent } from "react";
 import { Button } from "../ui/button";
-import {   Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger, } from "../ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 
 const AddToDo = () => {
+  const [task, setTask] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
-
-  const [task,setTask]=React.useState('')
-  const [description,setDescription]=React.useState('')
-
-
-  const handleSubmit =(e:FormEvent)=>{
-    e.preventDefault()
-    console.log({task,description})
-    console.log("working")
-
-  }
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log({ task, description });
+    console.log("working");
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -34,9 +32,7 @@ const AddToDo = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add Task</DialogTitle>
-          <DialogDescription>
-            Add Task you Want to finish
-          </DialogDescription>
+          <DialogDescription>Add Task you Want to finish</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -46,6 +42,7 @@ const AddToDo = () => {
             <Input
               id="task"
               className="col-span-3"
+              onBlur={(e) => setTask(e.target.value)}
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -55,16 +52,27 @@ const AddToDo = () => {
             <Input
               id="description"
               className="col-span-3"
+              onBlur={(e) => setDescription(e.target.value)}
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={handleSubmit}>Save changes</Button>
+          <DialogClose asChild>
+
+            <Button onClick={handleSubmit} type="submit" >
+              Save changes
+            </Button>
+          </DialogClose>
         </DialogFooter>
+        {/* <DialogFooter className="sm:justify-start">
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Close
+            </Button>
+          </DialogClose>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
-   
-
   );
 };
 
