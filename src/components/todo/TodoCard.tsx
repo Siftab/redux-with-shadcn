@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { TTodo } from "@/redux/features/todoSlice";
+import { removeTodo, TTodo } from "@/redux/features/todoSlice";
+import { useAppDispatch } from "@/redux/Hook";
 
 
  type TTodoProps ={
@@ -8,6 +9,9 @@ import { TTodo } from "@/redux/features/todoSlice";
  }
 
 const TodoCard = ({item}:TTodoProps ) => {
+
+  const dispatch =useAppDispatch()
+  
   console.log(item)
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
@@ -16,7 +20,7 @@ const TodoCard = ({item}:TTodoProps ) => {
       {/* <p>time </p> */}
       <p>{item.description  }</p>
       <div className="space-x-5">
-        <Button className="bg-red-500">
+        <Button className="bg-red-500"  onClick={()=>dispatch(removeTodo(item.taskid))}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

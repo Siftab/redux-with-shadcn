@@ -1,33 +1,39 @@
-import { createSlice, PayloadAction,  } from "@reduxjs/toolkit";
-
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 export type TTodo = {
-    title:string,
-    description:string,
-    isCompleted?:boolean
-}
+  taskid: string;
+  title: string;
+  description: string;
+  isCompleted?: boolean;
+};
 
 type TinitialState = {
-    todos: TTodo[]
-}
+  todos: TTodo[];
+};
 
-const initialState :TinitialState = {
-    todos:[]
-}
+const initialState: TinitialState = {
+  todos: [],
+};
 
 export const todoSlice = createSlice({
-    name:"todo",
-    initialState,
-    reducers:{
+  name: "todo",
+  initialState,
+  reducers: {
+    addTodo: (state, action: PayloadAction<TTodo>) => {
+      state.todos.push({
+        taskid: uuidv4(),
+        ...action.payload,
+        isCompleted: false,
+      });
+    },
+    removeTodo: (state,action:PayloadAction<string>)=>{
 
-        addTodo:(state,action:PayloadAction<TTodo>)=>{
-            state.todos.push({...action.payload,isCompleted:false} )
-        }
+       state.todos= state.todos.filter(item=> item.taskid !== action.payload)
 
     }
+  },
+});
 
-})
-
-export const {addTodo} = todoSlice.actions
-export default todoSlice.reducer
+export const { addTodo ,removeTodo} = todoSlice.actions;
+export default todoSlice.reducer;
