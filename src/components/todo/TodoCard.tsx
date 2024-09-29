@@ -19,7 +19,7 @@ const TodoCard = ({item}:TTodoProps ) => {
   console.log(item)
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
-      <input type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
+      <input defaultChecked={item.isCompleted} type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
       <p className="font-semibold">{item.title} </p>
       <p>{item.isCompleted? <span className="text-green-400">Done</span>:<span className="text-red-500">pending</span>} </p>
       <p>{item.description  }</p>

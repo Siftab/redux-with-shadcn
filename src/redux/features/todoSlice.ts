@@ -1,3 +1,4 @@
+import { Item } from "@radix-ui/react-dropdown-menu";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
@@ -37,6 +38,12 @@ export const todoSlice = createSlice({
         const task = state.todos.find(item=>item.taskid === action.payload)
 
         task!.isCompleted = !task?.isCompleted
+
+
+        state.todos= [
+            ...state.todos.filter(item=> !item.isCompleted),
+            ...state.todos.filter(item=> item.isCompleted)
+        ]
 
     }
   },
