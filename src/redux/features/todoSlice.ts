@@ -27,6 +27,11 @@ export const todoSlice = createSlice({
         isCompleted: false,
         taskid: uuidv4(),
       });
+
+      state.todos= [
+        ...state.todos.filter(item=> !item.isCompleted),
+        ...state.todos.filter(item=> item.isCompleted)
+    ]
     },
     removeTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter(

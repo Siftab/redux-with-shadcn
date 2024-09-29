@@ -14,17 +14,18 @@ const TodoCard = ({item}:TTodoProps ) => {
 
   const toggleState =()=>{
     console.log("clicked")
+    dispatch(removeTodo(item.taskid))
   }
   
   console.log(item)
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
-      <input defaultChecked={item.isCompleted} type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
+      <input checked={item.isCompleted} type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
       <p className="font-semibold">{item.title} </p>
       <p>{item.isCompleted? <span className="text-green-400">Done</span>:<span className="text-red-500">pending</span>} </p>
       <p>{item.description  }</p>
       <div className="space-x-5">
-        <Button className="bg-red-500"  onClick={()=>dispatch(removeTodo(item.taskid))}>
+        <Button className="bg-red-500"  onChange={toggleState}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
