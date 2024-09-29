@@ -12,14 +12,13 @@ import {
 } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { useAppDispatch } from "@/redux/Hook";
+import { useAppDispatch, useAppSelector } from "@/redux/Hook";
 import { addTodo } from "@/redux/features/todoSlice";
 
 const AddToDo = () => {
   const [task, setTask] = React.useState("");
   const [description, setDescription] = React.useState(""); 
   const dispatch = useAppDispatch()
-  // const todo = useAppSelector((state)=> state.todo)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

@@ -1,13 +1,20 @@
 import React from "react";
 import { Button } from "../ui/button";
+import { TTodo } from "@/redux/features/todoSlice";
 
-const TodoCard = () => {
+
+ type TTodoProps ={
+  item:TTodo
+ }
+
+const TodoCard = ({item}:TTodoProps ) => {
+  console.log(item)
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
       <input type="checkbox" />
-      <p className="font-semibold">todo title </p>
-      <p>time </p>
-      <p>description</p>
+      <p className="font-semibold">{item.title} </p>
+      {/* <p>time </p> */}
+      <p>{item.description  }</p>
       <div className="space-x-5">
         <Button className="bg-red-500">
           <svg

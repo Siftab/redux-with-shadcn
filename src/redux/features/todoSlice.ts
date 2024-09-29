@@ -2,7 +2,7 @@ import { createSlice, PayloadAction,  } from "@reduxjs/toolkit";
 
 
 
-type TTodo = {
+export type TTodo = {
     title:string,
     description:string,
     isCompleted?:boolean
