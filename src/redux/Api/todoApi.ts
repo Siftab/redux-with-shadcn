@@ -15,3 +15,5 @@ export const todoApi = createApi({
         })
     })
 })
+
+export const {useGetTodosQuery}=todoApi
