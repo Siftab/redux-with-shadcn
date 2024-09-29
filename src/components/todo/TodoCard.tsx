@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { removeTodo, TTodo } from "@/redux/features/todoSlice";
+import { removeTodo, toogleComplete, TTodo } from "@/redux/features/todoSlice";
 import { useAppDispatch } from "@/redux/Hook";
 
 
@@ -11,11 +11,15 @@ import { useAppDispatch } from "@/redux/Hook";
 const TodoCard = ({item}:TTodoProps ) => {
 
   const dispatch =useAppDispatch()
+
+  const toggleState =()=>{
+    console.log("clicked")
+  }
   
   console.log(item)
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
-      <input type="checkbox" />
+      <input type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
       <p className="font-semibold">{item.title} </p>
       <p>{item.isCompleted? <span className="text-green-400">Done</span>:<span className="text-red-500">pending</span>} </p>
       <p>{item.description  }</p>

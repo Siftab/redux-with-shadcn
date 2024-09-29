@@ -32,8 +32,15 @@ export const todoSlice = createSlice({
         (item) => item.taskid !== action.payload
       );
     },
+    toogleComplete:(state,action:PayloadAction<string>)=>{
+
+        const task = state.todos.find(item=>item.taskid === action.payload)
+
+        task!.isCompleted = !task?.isCompleted
+
+    }
   },
 });
 
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, removeTodo ,toogleComplete} = todoSlice.actions;
 export default todoSlice.reducer;
