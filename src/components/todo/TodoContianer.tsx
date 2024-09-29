@@ -4,6 +4,7 @@ import AddToDo from "./AddToDo";
 import TodoFilter from "./TodoFilter";
 import { useAppSelector } from "@/redux/Hook";
 import { useGetTodosQuery } from "@/redux/Api/todoApi";
+import { TTodo } from "@/redux/features/todoSlice";
 
 const TodoContianer = () => {
   // const { todos } = useAppSelector((state) => state.todo);
@@ -26,7 +27,7 @@ const TodoContianer = () => {
         {/* <div className='text-center font-bold bg-white p-5 rounded-lg'>there is no task pending </div> */}
         <div className="bg-white h-full space-y-3 p-10 rounded-md">
           {todos?.data?.length ? (
-            todos?.data?.map((item, idx) => <TodoCard key={idx} item={item} />)
+            todos?.data?.map((item:TTodo, idx:number) => <TodoCard key={idx} item={item} />)
           ) : (
             <div className="text-center font-bold bg-white p-5 rounded-lg">
               there is no task pending

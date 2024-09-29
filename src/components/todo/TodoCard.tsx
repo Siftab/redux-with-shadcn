@@ -3,29 +3,60 @@ import { Button } from "../ui/button";
 import { removeTodo, toogleComplete, TTodo } from "@/redux/features/todoSlice";
 import { useAppDispatch } from "@/redux/Hook";
 
+type TTodoProps = {
+  item: TTodo;
+};
 
- type TTodoProps ={
-  item:TTodo
- }
+const TodoCard = ({ item }: TTodoProps) => {
+  const dispatch = useAppDispatch();
 
-const TodoCard = ({item}:TTodoProps ) => {
+  const toggleState = () => {
+    console.log("clicked");
+    dispatch(removeTodo(item.taskid));
+  };
 
-  const dispatch =useAppDispatch()
-
-  const toggleState =()=>{
-    console.log("clicked")
-    dispatch(removeTodo(item.taskid))
-  }
-  
-  console.log(item)
+  console.log(item);
   return (
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
-      <input checked={item.isCompleted} type="checkbox" onChange={()=>dispatch(toogleComplete(item.taskid))} />
-      <p className="font-semibold">{item.title} </p>
-      <p>{item.isCompleted? <span className="text-green-400">Done</span>:<span className="text-red-500">pending</span>} </p>
-      <p>{item.description  }</p>
+      <input
+        className="mr-4"
+        checked={item.isCompleted}
+        type="checkbox"
+        onChange={() => dispatch(toogleComplete(item.taskid))}
+      />
+      <div className="flex items-center gap-2">
+        <div
+          className={`size-3 rounded-full
+             ${
+            item.priority === "high"
+              ? "bg-red-600"
+              :null
+          }
+             ${
+            item.priority === "medium"
+              ? "bg-green-600"
+              :null
+          }
+             ${
+            item.priority === "low"
+              ? "bg-yellow-600"
+              :null
+          }
+          `}
+        ></div>
+        <p>priority</p>
+      </div>
+      <p className="font-semibold flex-1">{item.title} </p>
+      <p className="flex-1">
+        {item.isCompleted ? (
+          <span className="text-green-400">Done</span>
+        ) : (
+          <span className="text-red-500">pending</span>
+        )}{" "}
+      </p>
+      <p className="flex-[2]">{item.description}</p>
       <div className="space-x-5">
-        <Button className="bg-red-500"  onChange={toggleState}>
+        <Button className="bg-red-500" onChange={toggleState}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
