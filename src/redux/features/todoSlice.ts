@@ -22,18 +22,18 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<TTodo>) => {
       state.todos.push({
-        taskid: uuidv4(),
         ...action.payload,
         isCompleted: false,
+        taskid: uuidv4(),
       });
     },
-    removeTodo: (state,action:PayloadAction<string>)=>{
-
-       state.todos= state.todos.filter(item=> item.taskid !== action.payload)
-
-    }
+    removeTodo: (state, action: PayloadAction<string>) => {
+      state.todos = state.todos.filter(
+        (item) => item.taskid !== action.payload
+      );
+    },
   },
 });
 
-export const { addTodo ,removeTodo} = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
 export default todoSlice.reducer;
