@@ -17,7 +17,7 @@ const TodoCard = ({item}:TTodoProps ) => {
     <div className="flex bg-yellow-200 p-3 justify-between items-center rounded-lg border">
       <input type="checkbox" />
       <p className="font-semibold">{item.title} </p>
-      {/* <p>time </p> */}
+      <p>{item.isCompleted? <span className="text-green-400">Done</span>:<span className="text-red-500">pending</span>} </p>
       <p>{item.description  }</p>
       <div className="space-x-5">
         <Button className="bg-red-500"  onClick={()=>dispatch(removeTodo(item.taskid))}>
