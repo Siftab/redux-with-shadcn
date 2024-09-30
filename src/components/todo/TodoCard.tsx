@@ -10,7 +10,6 @@ type TTodoProps = {
 
 const TodoCard = ({ item }: TTodoProps) => {
   const dispatch = useAppDispatch();
-  const {refetch}= useGetTodosQuery(undefined)
 
   const toggleState = () => {
     console.log("clicked");

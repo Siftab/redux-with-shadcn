@@ -42,7 +42,7 @@ const AddToDo = () => {
 
     addTodo({ title: task, description, priority,isCompleted :false});
 
-    refacthAllCards()
+    // refacthAllCards()
 
   };
   return (
