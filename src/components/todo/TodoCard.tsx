@@ -24,7 +24,7 @@ const TodoCard = ({ item }: TTodoProps) => {
         type="checkbox"
         onChange={() => dispatch(toogleComplete(item.taskid))}
       />
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-1">
         <div
           className={`size-3 rounded-full
              ${
@@ -44,7 +44,7 @@ const TodoCard = ({ item }: TTodoProps) => {
           }
           `}
         ></div>
-        <p>priority</p>
+        <p>{item?.priority}</p>
       </div>
       <p className="font-semibold flex-1">{item.title} </p>
       <p className="flex-1">

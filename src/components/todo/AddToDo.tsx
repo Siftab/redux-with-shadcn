@@ -13,16 +13,23 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { useAppDispatch, useAppSelector } from "@/redux/Hook";
-import { addTodo } from "@/redux/features/todoSlice";
+// import { addTodo } from "@/redux/features/todoSlice";
+import { useAddTodoMutation } from "@/redux/Api/todoApi";
 
 const AddToDo = () => {
   const [task, setTask] = React.useState("");
   const [description, setDescription] = React.useState(""); 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
+ const [addTodo,{data,isSuccess,isLoading}]= useAddTodoMutation()
+
+
+ console.log({data},isSuccess,isLoading)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-dispatch(addTodo({ title:task, description }));
+// dispatch(addTodo({ title:task, description }));
+
+addTodo({ title:task, description,priority:"high" })
     
   };
   return (

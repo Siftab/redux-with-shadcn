@@ -25,11 +25,11 @@ const TodoContianer = () => {
       </div>
       <div className=" bg-primary-gradient p-5 rounded-xl  mx-3">
         {/* <div className='text-center font-bold bg-white p-5 rounded-lg'>there is no task pending </div> */}
-        <div className="bg-white h-full space-y-3 p-10 rounded-md">
+        <div className="bg-white bg-opacity-70 h-full space-y-3 p-10 rounded-md">
           {todos?.data?.length ? (
             todos?.data?.map((item:TTodo, idx:number) => <TodoCard key={idx} item={item} />)
           ) : (
-            <div className="text-center font-bold bg-white p-5 rounded-lg">
+            <div className="text-center font-bold bg-teal-500 p-5 rounded-lg">
               there is no task pending
             </div>
           )}
