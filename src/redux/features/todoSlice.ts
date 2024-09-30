@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 export type TTodo = {
-  taskid: string;
+  // taskid: string
+  _id: string
   title: string;
   description: string;
   isCompleted?: boolean;

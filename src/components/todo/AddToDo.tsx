@@ -32,14 +32,14 @@ const AddToDo = () => {
   // const dispatch = useAppDispatch()
   const [addTodo, { data, isSuccess, isLoading }] = useAddTodoMutation();
 
-  console.log({ data }, isSuccess, isLoading);
+  // console.log({ data }, isSuccess, isLoading);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // dispatch(addTodo({ title:task, description }));
 
-    // addTodo({ title: task, description, priority });vlg
-    console.log(({ title: task, description, priority }))
+    addTodo({ title: task, description, priority,isCompleted :false});
+
   };
   return (
     <Dialog>
@@ -74,11 +74,11 @@ const AddToDo = () => {
               onBlur={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
+          <div className="grid grid-cols-4  items-center gap-4">
             <Label className="text-right">Priority</Label>
             <Select onValueChange={(value)=> setPriority(value)}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="set priority" onChange={()=>console.log()} />
+              <SelectTrigger className="col-span-3">
+                <SelectValue placeholder="set priority"  />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>

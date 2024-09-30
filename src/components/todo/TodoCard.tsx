@@ -12,7 +12,7 @@ const TodoCard = ({ item }: TTodoProps) => {
 
   const toggleState = () => {
     console.log("clicked");
-    dispatch(removeTodo(item.taskid));
+    dispatch(removeTodo(item._id));
   };
 
   console.log(item);
@@ -22,7 +22,7 @@ const TodoCard = ({ item }: TTodoProps) => {
         className="mr-4"
         checked={item.isCompleted}
         type="checkbox"
-        onChange={() => dispatch(toogleComplete(item.taskid))}
+        onChange={() => dispatch(toogleComplete(item._id))}
       />
       <div className="flex items-center gap-2 flex-1">
         <div
