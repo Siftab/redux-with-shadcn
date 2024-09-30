@@ -12,25 +12,34 @@ import {
 } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { useAppDispatch, useAppSelector } from "@/redux/Hook";
+// import { useAppDispatch, useAppSelector } from "@/redux/Hook";
 // import { addTodo } from "@/redux/features/todoSlice";
 import { useAddTodoMutation } from "@/redux/Api/todoApi";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const AddToDo = () => {
   const [task, setTask] = React.useState("");
-  const [description, setDescription] = React.useState(""); 
+  const [priority, setPriority] = React.useState("");
+  const [description, setDescription] = React.useState("");
   // const dispatch = useAppDispatch()
- const [addTodo,{data,isSuccess,isLoading}]= useAddTodoMutation()
+  const [addTodo, { data, isSuccess, isLoading }] = useAddTodoMutation();
 
-
- console.log({data},isSuccess,isLoading)
+  console.log({ data }, isSuccess, isLoading);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-// dispatch(addTodo({ title:task, description }));
+    // dispatch(addTodo({ title:task, description }));
 
-addTodo({ title:task, description,priority:"high" })
-    
+    // addTodo({ title: task, description, priority });vlg
+    console.log(({ title: task, description, priority }))
   };
   return (
     <Dialog>
@@ -65,11 +74,27 @@ addTodo({ title:task, description,priority:"high" })
               onBlur={(e) => setDescription(e.target.value)}
             />
           </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label className="text-right">Priority</Label>
+            <Select onValueChange={(value)=> setPriority(value)}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="set priority" onChange={()=>console.log()} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {/* <SelectLabel>Fruits</SelectLabel> */}
+                  <SelectItem value="high">high</SelectItem>
+                  <SelectItem value="medium">medium</SelectItem>
+                  <SelectItem value="low">low</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
+
         <DialogFooter>
           <DialogClose asChild>
-
-            <Button onClick={handleSubmit} type="submit" >
+            <Button onClick={handleSubmit} type="submit">
               Save changes
             </Button>
           </DialogClose>
