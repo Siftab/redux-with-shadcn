@@ -14,7 +14,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 // import { useAppDispatch, useAppSelector } from "@/redux/Hook";
 // import { addTodo } from "@/redux/features/todoSlice";
-import { useAddTodoMutation } from "@/redux/Api/todoApi";
+import { useAddTodoMutation, useGetTodosQuery } from "@/redux/Api/todoApi";
 import {
   Select,
   SelectContent,
@@ -31,6 +31,8 @@ const AddToDo = () => {
   const [description, setDescription] = React.useState("");
   // const dispatch = useAppDispatch()
   const [addTodo, { data, isSuccess, isLoading }] = useAddTodoMutation();
+  const {refetch:refacthAllCards}= useGetTodosQuery(undefined)
+
 
   // console.log({ data }, isSuccess, isLoading);
 
@@ -39,6 +41,8 @@ const AddToDo = () => {
     // dispatch(addTodo({ title:task, description }));
 
     addTodo({ title: task, description, priority,isCompleted :false});
+
+    refacthAllCards()
 
   };
   return (

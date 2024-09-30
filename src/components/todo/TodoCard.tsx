@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { removeTodo, toogleComplete, TTodo } from "@/redux/features/todoSlice";
 import { useAppDispatch } from "@/redux/Hook";
+import { useGetTodosQuery } from "@/redux/Api/todoApi";
 
 type TTodoProps = {
   item: TTodo;
@@ -9,6 +10,7 @@ type TTodoProps = {
 
 const TodoCard = ({ item }: TTodoProps) => {
   const dispatch = useAppDispatch();
+  const {refetch}= useGetTodosQuery(undefined)
 
   const toggleState = () => {
     console.log("clicked");
