@@ -8,9 +8,20 @@ import { DropdownMenuTrigger , DropdownMenu,
     DropdownMenuRadioItem,
     DropdownMenuSeparator,} from "../ui/dropdown-menu";
 
-const TodoFilter = () => {
-  const [position, setPosition] = React.useState("Low")
-  console.log(position)
+    type NameStateProps = {
+      priority: string;
+      setPriority: React.Dispatch<React.SetStateAction<string>>;
+    };
+
+    type props ={
+      props : NameStateProps
+    }
+    
+ 
+
+const TodoFilter:React.FC<props> = ({props}) => {
+  // const {priority,setPriority}=props
+  console.log(props.priority)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -19,7 +30,7 @@ const TodoFilter = () => {
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Filter by Priority </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+        <DropdownMenuRadioGroup value={props.priority} onValueChange={props.setPriority}>
           <DropdownMenuRadioItem value="High">High</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Medium">Medium</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Low">Low</DropdownMenuRadioItem>
