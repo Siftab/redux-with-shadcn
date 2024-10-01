@@ -10,10 +10,16 @@ export const todoApi = createApi({
     endpoints:(builder)=>({
         getTodos: builder.query({
             
-            query:()=>({
-                url:'/tasks',
+            query:(priority)=>{
+                console.log( 'from redux',priority)
+                
+                return {
+                    url:`/tasks/?priority=`,
             method:"GET"
-            }),
+                }
+            // ,params:{priority}
+            },
+        
             providesTags:['todo']
         })
         ,addTodo: builder.mutation({

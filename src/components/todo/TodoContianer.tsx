@@ -13,8 +13,8 @@ const TodoContianer = () => {
   const [priority, setPriority] = React.useState("Low")
 
 
-  const {data:todos,isError,isLoading}=useGetTodosQuery()
-  console.log(todos)
+  const {data:todos,isError,isLoading}=useGetTodosQuery(priority)
+  console.log( "this  form todos==>",todos,priority)
 
 
   if (isLoading)
