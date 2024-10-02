@@ -14,7 +14,7 @@ export const todoApi = createApi({
                 console.log( 'from redux',priority)
                 
                 return {
-                    url:`/tasks/?priority=`,
+                    url:`/tasks/?priority=${priority}`,
             method:"GET"
                 }
             // ,params:{priority}

@@ -31,7 +31,7 @@ const AddToDo = () => {
   const [description, setDescription] = React.useState("");
   // const dispatch = useAppDispatch()
   const [addTodo, { data, isSuccess, isLoading }] = useAddTodoMutation();
-  const {refetch:refacthAllCards}= useGetTodosQuery(undefined)
+  const {refetch:refacthAllCards}= useGetTodosQuery()
 
 
   // console.log({ data }, isSuccess, isLoading);
