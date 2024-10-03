@@ -10,10 +10,10 @@ import { setPriority } from "os";
 const TodoContianer = () => {
   // const { todos } = useAppSelector((state) => state.todo);
   // console.log("this is con", typeof todos.length);
-  const [priority, setPriority] = React.useState("Low")
+  const [priority, setPriority] = React.useState('')
 
 
-  const {data:todos,isError,isLoading}=useGetTodosQuery(priority)
+  const {data:todos,isError,isLoading} = useGetTodosQuery(priority)
   console.log( "this  form todos==>",todos,priority)
 
 

@@ -31,9 +31,9 @@ const TodoFilter:React.FC<props> = ({props}) => {
         <DropdownMenuLabel>Filter by Priority </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={props.priority} onValueChange={props.setPriority}>
-          <DropdownMenuRadioItem value="High">High</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Medium">Medium</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Low">Low</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="high">High</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="medium">Medium</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="low">Low</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
